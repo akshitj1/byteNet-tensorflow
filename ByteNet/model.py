@@ -221,7 +221,7 @@ class Byte_net_model:
 
 		flat_logits = tf.reshape(decoder_output, [-1, options['n_target_quant']])
 		flat_targets = tf.reshape(target_one_hot, [-1, options['n_target_quant']])
-		loss = tf.nn.softmax_cross_entropy_with_logits(flat_logits, flat_targets, name='decoder_cross_entropy_loss')
+		loss = tf.nn.softmax_cross_entropy_with_logits(logits=flat_logits, labels=flat_targets, name='decoder_cross_entropy_loss')
 
 		if 'target_mask_chars' in options:
 			# MASK LOSS BEYOND EOL IN TARGET
